@@ -123,12 +123,15 @@ running() {
 }
 
 start_server() {
+        # create a directory for pid file if does not exist
+        mkdir -p `dirname "$PIDFILE"`
 # Start the process using the wrapper
         if [ -z "$DAEMONUSER" ] ; then
             start_daemon -p $PIDFILE $DAEMON $DAEMON_OPTS
             errcode=$?
         else
 # if we are using a daemonuser then change the user id
+            chown $DAEMONUSER:root `dirname "$PIDFILE"`
             start-stop-daemon --start --quiet --pidfile $PIDFILE \
                         --chuid $DAEMONUSER \
                         --exec $DAEMON -- $DAEMON_OPTS

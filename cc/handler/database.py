@@ -113,7 +113,7 @@ class DBWorker(threading.Thread):
         curs = self.get_cursor()
         func = msg.function
         args = msg.get ('params', [])
-        if isinstance (args, StringType):
+        if isinstance (args, (StringType, unicode)):
             args = cc.json.loads (args)
         assert isinstance (args, (DictType, ListType, TupleType))
 
