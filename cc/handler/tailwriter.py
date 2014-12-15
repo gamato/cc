@@ -31,6 +31,7 @@ CLOSE_DELAY = 30    # since last write
 comp_ext = {
     'gzip': '.gz',
     'bzip2': '.bz2',
+    'xz': '.xz',
     }
 
 class FileState (object):
@@ -81,7 +82,7 @@ class TailWriter (CCHandler):
             self.log.info ("position checking not supported for compressed files")
         if self.wparams['write_compressed'] == 'yes':
             self.wparams['compression'] = self.cf.get ('compression', '')
-            if self.wparams['compression'] not in ('gzip', 'bzip2'):
+            if self.wparams['compression'] not in ('gzip', 'bzip2', 'xz'):
                 self.log.error ("unsupported compression: %s", self.wparams['compression'])
             self.wparams['compression_level'] = self.cf.getint ('compression-level', '')
             self.wparams['buf_maxbytes'] = cc.util.hsize_to_bytes (self.cf.get ('buffer-bytes', '1 MB'))

@@ -11,6 +11,11 @@ try:
 except ImportError:
     from StringIO import StringIO
 
+try:
+    from backports import lzma
+except ImportError:
+    pass # optional dependency
+
 __all__ = ['write_atomic', 'compress', 'decompress', 'hsize_to_bytes']
 
 
@@ -62,6 +67,9 @@ def compress (buffer, method, options = {}):
     elif method == 'bzip2':
         cl = options.get ('level', 3) or 3
         data = bz2.compress (buffer, compresslevel = cl)
+    elif method == 'xz':
+        cl = options.get ('level', 6) or 6
+        data = lzma.compress (buffer, preset = cl)
     else:
         raise NotImplementedError ("unknown compression: %s" % method)
     return data
@@ -80,6 +88,8 @@ def decompress (buffer, method, options = {}):
         cs.close()
     elif method == 'bzip2':
         data = bz2.decompress (buffer)
+    elif method == 'xz':
+        data = lzma.decompress (buffer)
     else:
         raise NotImplementedError ("unknown compression: %s" % method)
     return data

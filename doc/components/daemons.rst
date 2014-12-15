@@ -30,10 +30,10 @@ Config options:
 
 * ``compression`` -- compression method to use for payload (output)
 
-  - '', 'none', 'gzip', 'bzip2'
+  - '', 'none', 'gzip', 'bzip2', 'xz'
   - defaults to no compression
 
-* ``compression-level`` -- compression level to use (for gzip and bzip2)
+* ``compression-level`` -- compression level to use (for gzip, bzip2, xz)
 
   - 1..9 where 1 is fastest and 9 is best ratio
   - default depends on compression method
@@ -72,10 +72,10 @@ Config options:
 
 * ``compression`` -- compression method to use for payload (file contents)
 
-  - '', 'none', 'gzip', 'bzip2'
+  - '', 'none', 'gzip', 'bzip2', 'xz'
   - defaults to no compression
 
-* ``compression-level`` -- compression level to use (for gzip and bzip2)
+* ``compression-level`` -- compression level to use (for gzip, bzip2, xz)
 
   - 1..9 where 1 is fastest and 9 is best ratio
   - default depends on compression method
@@ -147,10 +147,10 @@ Config options:
 
 * ``compression`` -- compression method to use for payload (file contents)
 
-  - '', 'none', 'gzip', 'bzip2'
+  - '', 'none', 'gzip', 'bzip2', 'xz'
   - defaults to no compression
 
-* ``compression-level`` -- compression level to use (for gzip and bzip2)
+* ``compression-level`` -- compression level to use (for gzip, bzip2, xz)
 
   - 1..9 where 1 is fastest and 9 is best ratio
   - default depends on compression method

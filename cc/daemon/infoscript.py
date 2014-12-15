@@ -46,7 +46,7 @@ class InfoScript(CCDaemon):
         self.info_period = self.cf.getfloat('info-period')
         self.info_name = self.cf.get('info-name')
         self.compression = self.cf.get ('compression', 'none')
-        if self.compression not in (None, '', 'none', 'gzip', 'bzip2'):
+        if self.compression not in (None, '', 'none', 'gzip', 'bzip2', 'xz'):
             self.log.error ("unknown compression: %s", self.compression)
         self.compression_level = self.cf.getint ('compression-level', '')
         self.msg_suffix = self.cf.get ('msg-suffix', '')

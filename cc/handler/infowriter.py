@@ -21,6 +21,7 @@ CC_HANDLER = 'InfoWriter'
 comp_ext = {
     'gzip': '.gz',
     'bzip2': '.bz2',
+    'xz': '.xz',
     }
 
 class InfoWriter (BaseProxyHandler):
@@ -48,7 +49,7 @@ class InfoWriter (BaseProxyHandler):
         assert self.wparams['write_compressed'] in [None, '', 'no', 'keep', 'yes']
         if self.wparams['write_compressed'] == 'yes':
             self.wparams['compression'] = self.cf.get ('compression', '')
-            if self.wparams['compression'] not in ('gzip', 'bzip2'):
+            if self.wparams['compression'] not in ('gzip', 'bzip2', 'xz'):
                 self.log.error ("unsupported compression: %s", self.wparams['compression'])
             self.wparams['compression_level'] = self.cf.getint ('compression-level', '')
 

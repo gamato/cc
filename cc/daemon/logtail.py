@@ -62,7 +62,7 @@ class LogfileTailer (CCDaemon):
             self.logmask = self.logname
 
         self.compression = self.cf.get ('compression', '')
-        if self.compression not in (None, '', 'none', 'gzip', 'bzip2'):
+        if self.compression not in (None, '', 'none', 'gzip', 'bzip2', 'xz'):
             self.log.error ("unknown compression: %s", self.compression)
         self.compression_level = self.cf.getint ('compression-level', '')
         self.msg_suffix = self.cf.get ('msg-suffix', '')
